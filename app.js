@@ -10,7 +10,7 @@
     
 
      
-
+      let attBox = prompt("What would you like to do?(Attack or Retreat)")
 
     function generateRandomAccInteger(min, max) {
         return (Math.random() * (max - min) + min ).toFixed(1)
@@ -24,8 +24,7 @@
             this.ranAcc = generateRandomAccInteger(0, 1)
         }
         updateStats(){
-            // let eneHull = "Hull : " + this.hull
-            // document.body.innerHTML = document.body.innerHTML.replace('Hull : 6', eneHull)
+        
             
             let eneHull = document.createElement('div')// Enemy Hull
             eneHull = " Hull : " + this.hull 
@@ -43,11 +42,12 @@
             console.log(this.name + eneHull + eneFP + eneAcc)
          
             if(this.hull <= 0){
-                eneArr.splice();
+         
                 console.log(this.name + " has been destroyed!")
             }
+        
         }
-         
+          
             eneAttack(){
                 if(this.ranAcc > this.accuracy && this.hull > 0){
                     console.log(this.name + " has missed!")
@@ -56,10 +56,7 @@
                     ussSchwarzenegger.hull -= this.firepower
                     ussSchwarzenegger.ussStats()
                 }
-                   
             }
-
-
         }
 
         let eneArr = [new Enemy("ene1"), new Enemy("ene2"), new Enemy("ene3"), new Enemy("ene4"), new Enemy("ene5"), new Enemy("ene6")]
@@ -86,75 +83,27 @@
                 document.querySelector('.playerStats').childNodes[3].nodeValue = pAcc
             }
             attack(){
-                // const attBox = prompt("What would you like to do?(Attack or Retreat)")
-
-                // if(attBox = "Attack" ){
-                //     ussSchwarzenegger.attack()
-                //  }else if(attBox = "retreat"){
-                //      alert("You lost!")
-                //  }
-
-
                 for(let i = 0; i < eneArr.length; i++){
-                    
-                    // switch(attBox){
-                    //     case "attack":
-                    //         eneArr[i].hull -= this.firepower
-                    //         console.log(`${eneArr[i].name} Hull : ${eneArr[i].hull}`);
-                    //         eneArr[i].updateStats();
-                    //     case eneArr[i].hull > 0:
-                    //           attBox;
-                    //           break;
-                    //     case eneArr[i] <= 0:
-                    //         eneArr.splice();
-                    //     console.log(eneArr[i].name + " has been destroyed!")
-                    //     attBox
-                    //         break;
-                    //     case "attack":
-                    //             console.log(`Enemy 4 Hull : ${eneArr[3].hull -= this.firepower}`);
-                    //             attBox;
-                    //             break;
-                    //     case "attack":
-                    //             console.log(`Enemy 5 Hull : ${eneArr[4].hull -= this.firepower}`);
-                    //             attBox;
-                    //             break;
-                    //     case "attack":
-                    //             console.log(`Enemy 6 Hull : ${eneArr[5].hull -= this.firepower}`);
-                    //             attBox;
-                    //             break;
-                    //     default:
-                    //         attBox;
-                    //     }
                     let attBox = prompt("What would you like to do?(Attack or Retreat)")
-
-                    if(attBox == "attack" && eneArr[i].hull > 0){
-                        eneArr[i].hull -= this.firepower;
-                        // console.log(`${eneArr[i].name} Hull : ${eneArr[i].hull}`);
-                        eneArr[i].updateStats();
-                        eneArr[i].eneAttack();
-                        ussSchwarzenegger.ussStats()
-                        // prompt("What would you like to do?(Attack or Retreat)");
+                    if(eneArr[i].hull > 0){
+                        if(attBox == "attack" && eneArr[i].hull > 0 ){
+                            eneArr[i].hull -= this.firepower;
+                            eneArr[i].updateStats();
+                            eneArr[i].eneAttack();
+                            ussSchwarzenegger.ussStats()   
                     }
-                    // switch(attBox){
-                    //     case eneArr[0].hull > 0:
-                    //     attBox = prompt("What would you like to do?(Attack or Retreat)")
-                    //     break;
-                    // }
-                    // else if(eneArr[i].hull > 0){ 
-                    //   prompt("What would you like to do?(Attack or Retreat)");
-                    // }
-                    //  if(attBox == "attack" && eneArr[i] <= 0){
-                    //     eneArr[i].splice();
-                    //     console.log(eneArr[i].name + " has been destroyed!")
-                    //     // prompt("What would you like to do?(Attack or Retreat)")
-                    // }
-                    else {
-                        eneArr[i].splice();
-                        console.log(eneArr[i].name + " has been destroyed!")
-                        // prompt("What would you like to do?(Attack or Retreat)")
+                    for(let j = 0; eneArr[i].hull > 0; j++){
+                         attBox = prompt("What would you like to do?(Attack or Retreat)")
+                         if(attBox == "attack" && eneArr[j].hull > 0 ){
+                            eneArr[j].eneAttack();
+                            eneArr[j].hull -= this.firepower;
+                            eneArr[j].updateStats();
+                            ussSchwarzenegger.ussStats()   
                     }
-
+                        }
+                    }
                    
+                    
                 }
 
             }
@@ -171,25 +120,4 @@
 
         ussSchwarzenegger.ussStats()
         
-        // function attack(){
-        // return console.log(ene1.eneHull -= ussSchwarzenegger.firepower)
-        // }
         ussSchwarzenegger.attack()
-
-    //        let attBox = prompt("What would you like to do?(Attack or Retreat)")
-
-    // //    for(let i = 0; i < eneArr.length; i++){
-       
-    //         if(attBox = "Attack" ){
-    //            ussSchwarzenegger.attack()
-    //         }else if(attBox = "retreat"){
-    //             alert("You lost!")
-    //         }
-    //    }
-        // switch(attBox){
-        //     case "Attack":
-        //     ussSchwarzenegger.attack();
-        //     break;
-        //     default:
-        //     ussSchwarzenegger.attack();
-        // }
