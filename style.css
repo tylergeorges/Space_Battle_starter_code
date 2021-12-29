@@ -23,12 +23,12 @@ flex-direction: column;
 justify-content: space-around;
 align-items: center;
 }
-.left{
+/* .left{
 
 }
 .right{
     
-}
+} */
 
 .nameBox{
     border: 1px solid black;
@@ -80,7 +80,7 @@ align-items: center;
     box-shadow: 0px 0px 20px 10px white;
     
 
-    
+
 }
 .enemyStats{
     display: flex;
