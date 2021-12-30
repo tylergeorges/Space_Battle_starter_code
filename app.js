@@ -33,20 +33,20 @@
             eneAcc= "  Accuracy : " + this.accuracy 
             document.querySelector('.enemyStats').childNodes[4].nodeValue = eneAcc 
             
-            console.log(this.name + eneHull + eneFP + eneAcc)
+            console.log('%c ' + this.name + eneHull + eneFP + eneAcc , 'background-color: red; color: white;')
          
             if(this.hull <= 0){
             
-            console.log(this.name + " has been destroyed!")
+            console.log("%c " + this.name + " has been destroyed!" , " color: red; font-size:3em;")
             }
         
         }
           
             eneAttack(){
                 if(this.ranAcc > this.accuracy && this.hull > 0){
-                    console.log(this.name + " has missed!")
+                    console.log("%c " + this.name + " has missed!" , " color: green; font-size:2em;")
                 }else if (this.ranAcc <= this.accuracy && this.hull > 0){
-                    console.log("USS Schwarzenegger has been hit! ")
+                    console.log("%c " + "USS Schwarzenegger has been hit! " , " color: green; font-size:2em;")
                     ussSchwarzenegger.hull -= this.firepower
                     ussSchwarzenegger.ussStats()
                 }
@@ -86,7 +86,7 @@
                             eneArr[i].updateStats();
                             eneArr[i].eneAttack();
                             ussSchwarzenegger.ussStats()
-                            console.log("Your Hull : " + this.hull)
+                            console.log('%c Your Hull : ' + this.hull , 'font-style: italic; background: white; border: 1px solid grey; color: black;')
                     }
                     // if (this.hull < 20 && eneArr[i].hull > 0){
                     //     let attReBox = prompt("What would you like to do?(Attack or Retreat)").toLowerCase();
@@ -120,13 +120,13 @@
                                     eneArr[i].eneAttack();
                                     eneArr[i].updateStats();
                                     ussSchwarzenegger.ussStats();
-                                    console.log("Your Hull : " + this.hull)
+                                    console.log('%c Your Hull : ' + this.hull , 'font-style: italic; background: white; border: 1px solid grey; color: black;')
                                     }
                         }
                         }
                      
                         if(eneArr[0].hull <= 0 && eneArr[1].hull <= 0 && eneArr[2].hull <= 0 && eneArr[3].hull <= 0 && eneArr[4].hull <= 0 && eneArr[5].hull <= 0){
-                            console.log("You Won!")
+                            console.log("%c " + "You Won!", "font-size:3em; color: yellow;")
                             let gameOver = prompt("Play Again?").toLowerCase();
                             if(gameOver == "yes"){
                                 location.reload();
