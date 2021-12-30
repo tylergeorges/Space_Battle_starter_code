@@ -107,7 +107,7 @@
 
                     for(let j = 0; eneArr[i].hull > 0; j++){//Checks to see if you attack and the enemy still has health, then asks to attack or retreat
                         if (this.hull < 20 && eneArr[i].hull > 0){
-                            let attReBox = prompt("What would you like to do?(Attack or Retreat)").toLowerCase();
+                            let attReBox = prompt("You've been hit! Attack or Retreat").toLowerCase();
                             if(attReBox == "retreat"){
                                 eneArr = []
                               alert("You Lost! Restarting...")
