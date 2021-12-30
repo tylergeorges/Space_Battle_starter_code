@@ -42,8 +42,8 @@
             console.log(this.name + eneHull + eneFP + eneAcc)
          
             if(this.hull <= 0){
-         
-                console.log(this.name + " has been destroyed!")
+            
+            console.log(this.name + " has been destroyed!")
             }
         
         }
@@ -59,8 +59,8 @@
             }
         }
 
-        let eneArr = [new Enemy("ene1"), new Enemy("ene2"), new Enemy("ene3"), new Enemy("ene4"), new Enemy("ene5"), new Enemy("ene6")]
-
+      let eneArr = [new Enemy("ene1"), new Enemy("ene2"), new Enemy("ene3"), new Enemy("ene4"), new Enemy("ene5"), new Enemy("ene6")]
+     
 
         class USS{
             constructor(){
@@ -72,51 +72,69 @@
                 
                 let pHull = document.createElement('div')
                 pHull = "Hull : " + this.hull
-                document.querySelector('.playerStats').firstChild.nodeValue = pHull
+                document.querySelector('.playerStats').firstChild.nodeValue = pHull //player hull
 
                 let pFP = document.createElement('div')
                 pFP = "FirePower : " + this.firepower
-                document.querySelector('.playerStats').childNodes[1].nodeValue = pFP
+                document.querySelector('.playerStats').childNodes[1].nodeValue = pFP //player fire power
 
                 let pAcc = document.createElement('div')
                 pAcc = "Accuracy : " + this.accuracy
-                document.querySelector('.playerStats').childNodes[3].nodeValue = pAcc
+                document.querySelector('.playerStats').childNodes[3].nodeValue = pAcc // player accuracy 
             }
             attack(){
                 for(let i = 0; i < eneArr.length; i++){
-                    let attBox = prompt("What would you like to do?(Attack or Retreat)")
+                    let attBox = prompt("Type \"Attack\" to attack!")
                     if(eneArr[i].hull > 0){
                         if(attBox == "attack" && eneArr[i].hull > 0 ){
+                            eneArr[i].updateStats();
                             eneArr[i].hull -= this.firepower;
                             eneArr[i].updateStats();
                             eneArr[i].eneAttack();
-                            ussSchwarzenegger.ussStats()   
+                            ussSchwarzenegger.ussStats()
+                            console.log("Your Hull : " + this.hull)
                     }
                     for(let j = 0; eneArr[i].hull > 0; j++){
-                         attBox = prompt("What would you like to do?(Attack or Retreat)")
-                         if(attBox == "attack" && eneArr[j].hull > 0 ){
-                            eneArr[j].eneAttack();
-                            eneArr[j].hull -= this.firepower;
-                            eneArr[j].updateStats();
-                            ussSchwarzenegger.ussStats()   
-                    }
+                        let attBox1 = prompt("What would you like to do?(Attack or Retreat)")
+                            switch(attBox1){
+                                case "attack":
+                                    eneArr[i].hull -= this.firepower;
+                                    eneArr[i].eneAttack();
+                                    eneArr[i].updateStats();
+                                    ussSchwarzenegger.ussStats();
+                                    console.log("Your Hull : " + this.hull)
+                                break;
+                            }
+                            if(attBox1 == "retreat"){
+                                console.log("You Lost! Restarting...")
+                                location.reload();
+                            }
+                           
+                        }
+                        if(eneArr[0].hull <= 0 && eneArr[1].hull <= 0 && eneArr[2].hull <= 0 && eneArr[3].hull <= 0 && eneArr[4].hull <= 0 && eneArr[5].hull <= 0){
+                            console.log("You Won!")
+                            let gameOver = prompt("Play Again?")
+                            if(gameOver == "yes"){
+                                location.reload();
+                            }
                         }
                     }
-                   
-                    
                 }
 
             }
         }
 
         let ussSchwarzenegger = new USS()
-        
-        eneArr[5].updateStats()
-        eneArr[4].updateStats()
-        eneArr[3].updateStats()
-        eneArr[2].updateStats()
-        eneArr[1].updateStats()
-        eneArr[0].updateStats()
+      
+
+
+        // eneArr[5].updateStats()
+        // eneArr[4].updateStats()
+        // eneArr[3].updateStats()
+        // eneArr[2].updateStats()
+        // eneArr[1].updateStats()
+        // eneArr[0].updateStats()
+
 
         ussSchwarzenegger.ussStats()
         
