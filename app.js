@@ -1,16 +1,10 @@
-    // const playerStats = document.getElementsByClassName('playerStats')
-    // let enemyStats = document.getElementsByClassName('enemyStats')
-    // let enemyHull = document.getElementsByClassName('enemyStats')
+ 
     
 
     function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random()*(max + 1 - min))
-      }
-      
-    
+      }    
 
-     
-      let attBox = prompt("What would you like to do?(Attack or Retreat)")
 
     function generateRandomAccInteger(min, max) {
         return (Math.random() * (max - min) + min ).toFixed(1)
@@ -84,10 +78,10 @@
             }
             attack(){
                 for(let i = 0; i < eneArr.length; i++){
-                    let attBox = prompt("Type \"Attack\" to attack!")
+                    eneArr[i].updateStats();
+                    let attBox = prompt("Type \"Attack\" to attack!").toLowerCase();
                     if(eneArr[i].hull > 0){
                         if(attBox == "attack" && eneArr[i].hull > 0 ){
-                            eneArr[i].updateStats();
                             eneArr[i].hull -= this.firepower;
                             eneArr[i].updateStats();
                             eneArr[i].eneAttack();
@@ -95,7 +89,7 @@
                             console.log("Your Hull : " + this.hull)
                     }
                     for(let j = 0; eneArr[i].hull > 0; j++){
-                        let attBox1 = prompt("What would you like to do?(Attack or Retreat)")
+                        let attBox1 = prompt("What would you like to do?(Attack or Retreat)").toLowerCase();
                             switch(attBox1){
                                 case "attack":
                                     eneArr[i].hull -= this.firepower;
@@ -104,6 +98,7 @@
                                     ussSchwarzenegger.ussStats();
                                     console.log("Your Hull : " + this.hull)
                                 break;
+                             
                             }
                             if(attBox1 == "retreat"){
                                 console.log("You Lost! Restarting...")
@@ -113,10 +108,16 @@
                         }
                         if(eneArr[0].hull <= 0 && eneArr[1].hull <= 0 && eneArr[2].hull <= 0 && eneArr[3].hull <= 0 && eneArr[4].hull <= 0 && eneArr[5].hull <= 0){
                             console.log("You Won!")
-                            let gameOver = prompt("Play Again?")
+                            let gameOver = prompt("Play Again?").toLowerCase();
                             if(gameOver == "yes"){
                                 location.reload();
                             }
+                        else if(this.hull <= 0){
+                            let gameOver = prompt("Play Again?").toLowerCase();
+                            if(gameOver == "yes"){
+                                location.reload();
+                            }
+                        }
                         }
                     }
                 }
@@ -126,16 +127,6 @@
 
         let ussSchwarzenegger = new USS()
       
-
-
-        // eneArr[5].updateStats()
-        // eneArr[4].updateStats()
-        // eneArr[3].updateStats()
-        // eneArr[2].updateStats()
-        // eneArr[1].updateStats()
-        // eneArr[0].updateStats()
-
-
         ussSchwarzenegger.ussStats()
         
         ussSchwarzenegger.attack()
