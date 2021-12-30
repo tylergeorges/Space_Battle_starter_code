@@ -88,24 +88,43 @@
                             ussSchwarzenegger.ussStats()
                             console.log("Your Hull : " + this.hull)
                     }
-                    for(let j = 0; eneArr[i].hull > 0; j++){
-                        let attBox1 = prompt("What would you like to do?(Attack or Retreat)").toLowerCase();
-                            switch(attBox1){
-                                case "attack":
+                    // if (this.hull < 20 && eneArr[i].hull > 0){
+                    //     let attReBox = prompt("What would you like to do?(Attack or Retreat)").toLowerCase();
+                    //     if(attReBox == "retreat" && eneArr.length > i){
+                          
+                    //         location.reload();
+                    //     }
+                    //      if (attReBox == "attack"){
+                    //             eneArr[i].hull -= this.firepower;
+                    //             eneArr[i].eneAttack();
+                    //             eneArr[i].updateStats();
+                    //             ussSchwarzenegger.ussStats();
+                    //             console.log("Your Hull : " + this.hull)
+                    //             }
+                    // }
+
+                    //NESTED FOR LOOP VERSION
+
+                    for(let j = 0; eneArr[i].hull > 0; j++){//Checks to see if you attack and the enemy still has health, then asks to attack or retreat
+                        if (this.hull < 20 && eneArr[i].hull > 0){
+                            let attReBox = prompt("What would you like to do?(Attack or Retreat)").toLowerCase();
+                            if(attReBox == "retreat"){
+                                eneArr = []
+                              alert("You Lost! Restarting...")
+                              console.log("You Lost! Restarting...")
+                             
+                                location.reload();
+                            }
+                             if (attReBox == "attack"){
                                     eneArr[i].hull -= this.firepower;
                                     eneArr[i].eneAttack();
                                     eneArr[i].updateStats();
                                     ussSchwarzenegger.ussStats();
                                     console.log("Your Hull : " + this.hull)
-                                break;
-                             
-                            }
-                            if(attBox1 == "retreat"){
-                                console.log("You Lost! Restarting...")
-                                location.reload();
-                            }
-                           
+                                    }
                         }
+                        }
+                     
                         if(eneArr[0].hull <= 0 && eneArr[1].hull <= 0 && eneArr[2].hull <= 0 && eneArr[3].hull <= 0 && eneArr[4].hull <= 0 && eneArr[5].hull <= 0){
                             console.log("You Won!")
                             let gameOver = prompt("Play Again?").toLowerCase();
